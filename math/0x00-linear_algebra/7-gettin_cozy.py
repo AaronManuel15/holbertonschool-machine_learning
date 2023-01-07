@@ -20,13 +20,11 @@ def cat_matrices2D(mat1, mat2, axis=0):
 
     elif axis == 1:
         """ Concatenates along columns"""
-        i = 0
         try:
             for row in mat1:
                 matC.append(row.copy())
-            for row in matC:
-                row.append(*mat2[i])
-                i += 1
+            for i in range(len(mat2)):
+                matC.append(mat2[i].copy())
             return matC
 
         except Exception:
