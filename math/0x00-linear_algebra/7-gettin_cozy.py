@@ -25,10 +25,8 @@ def cat_matrices2D(mat1, mat2, axis=0):
         if len(mat1) != len(mat2):
             return None
         try:
-            for row in mat1:
-                matC.append(row.copy())
-            for i in range(len(mat2)):
-                matC[i].append(*mat2[i].copy())
+            for i in range(len(mat1)):
+                matC.append(mat1[i].copy() + mat2[i].copy())
             return matC
 
         except Exception:
