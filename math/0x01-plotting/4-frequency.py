@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Plotting Task 4-frequency"""
 import numpy as np
 import matplotlib.pyplot as plt
 

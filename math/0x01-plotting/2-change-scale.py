@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Plotting Task 2-change-scale"""
 import numpy as np
 import matplotlib.pyplot as plt
 

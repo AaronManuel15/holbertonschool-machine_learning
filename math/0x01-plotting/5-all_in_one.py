@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+""" Plotting Task 5-all_in_one"""
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.gridspec import GridSpec

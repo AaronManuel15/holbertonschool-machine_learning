@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Plotting Task 3-two"""
 import numpy as np
 import matplotlib.pyplot as plt
 
