@@ -8,6 +8,4 @@ def summation_i_squared(n):
     if n < 1:
         return None
 
-    nArray = list(range(1, n + 1))
-    nArray = map(lambda sq: sq**2, nArray)
-    return sum(nArray)
+    return sum(map(lambda sq: sq**2, list(range(1, n + 1))))
