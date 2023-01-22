@@ -42,3 +42,13 @@ class Normal():
         v = self.stddev
         m = self.mean
         return (1/((2*pi*v**2)**.5))*e**((-(x-m)**2)/(2*v**2))
+
+    def cdf(self, x):
+        """Calculates the value of the CDF for a given x-value"""
+
+        return .5*(1 + self.errorfx((x-self.mean)/(self.stddev*2**.5)))
+
+    def errorfx(self, x):
+        """Taylor series expansion for error function calc in CDF F(x)"""
+
+        return (2/(pi**.5))*(x-(x**3)/3 + (x**5)/10 - (x**7)/42 + (x**9)/216)
