@@ -8,7 +8,7 @@ class Poisson():
     def __init__(self, data=None, lambtha=1.):
 
         self.lambtha = float(lambtha)
-        if data:
+        if data is not None:
             if type(data) is not list:
                 raise TypeError("data must be a list")
             if len(data) <= 1:
