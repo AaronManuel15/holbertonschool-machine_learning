@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Task 0 for 0x03 - Probability"""
-from math import factorial
 pi = 3.1415926536
 e = 2.7182818285
 
@@ -24,6 +23,10 @@ class Poisson():
     def pmf(self, k):
         """Calculates the value of the PMF for a given number of “successes”"""
 
+        def factorial(number):
+            for i in range(1, int(number)):
+                number = number * i
+            return number
         k = int(k)
         if k < 1:
             return 0
