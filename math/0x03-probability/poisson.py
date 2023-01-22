@@ -1,5 +1,8 @@
 #!/usr/bin/env python3
 """Task 0 for 0x03 - Probability"""
+from math import factorial
+pi = 3.1415926536
+e = 2.7182818285
 
 
 class Poisson():
@@ -17,3 +20,11 @@ class Poisson():
         else:
             if lambtha <= 0:
                 raise ValueError("lambtha must be a positive value")
+
+    def pmf(self, k):
+        """Calculates the value of the PMF for a given number of “successes”"""
+
+        k = int(k)
+        if k < 1:
+            return 0
+        return ((e ** -self.lambtha) * (self.lambtha ** k))/factorial(k)
