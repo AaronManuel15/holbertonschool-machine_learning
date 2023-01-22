@@ -28,3 +28,23 @@ class Binomial():
                 raise ValueError("n must be a positive value")
             if p <= 0 or p >= 1:
                 raise ValueError("p must be greater than 0 and less than 1")
+
+    def pmf(self, k):
+        """Calculates the pmf of the binomial"""
+
+        k = int(k)
+        if k < 0:
+            return 0
+        n = self.n
+        p = self.p
+        comb = (self.factorial(n)/(self.factorial(k)*self.factorial(n - k)))
+        return (comb)*(p**k)*(1 - p)**(n - k)
+
+    def factorial(self, number):
+        """Performs factorial on number"""
+
+        if number == 0:
+            return 1
+        for i in range(1, int(number)):
+            number = number * i
+        return number
