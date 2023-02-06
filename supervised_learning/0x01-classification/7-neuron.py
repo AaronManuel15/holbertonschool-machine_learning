@@ -90,7 +90,7 @@ class Neuron():
                 step_plot[i] = self.cost(Y, self.__A)
 
         if graph is True:
-            plt.plot(step_plot.keys(), step_plot.values(), 'b')
+            plt.plot(step_plot.keys(), step_plot.values())
             plt.xlabel("iteration")
             plt.ylabel("cost")
             plt.title("Training Cost")
