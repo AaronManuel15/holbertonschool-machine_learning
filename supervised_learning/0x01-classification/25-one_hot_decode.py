@@ -13,7 +13,8 @@ def one_hot_decode(one_hot):
 
     if type(one_hot) is not np.ndarray:
         return None
-    m = len(one_hot)
+    elif one_hot.ndim != 2:
+        return None
     try:
         LabelVector = np.argmax(one_hot.T, axis=1)
         return LabelVector
