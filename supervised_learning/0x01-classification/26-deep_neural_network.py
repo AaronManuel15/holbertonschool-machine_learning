@@ -114,7 +114,7 @@ class DeepNeuralNetwork:
                 raise ValueError("step must be positive and <= iterations")
 
         step_plot = {}
-        for i in range(iterations + 1):
+        for i in range(iterations):
             self.forward_prop(X)
             self.gradient_descent(Y, self.__cache, alpha)
             if verbose and i % step == 0:
