@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Task 6"""
-import numpy as np
 import tensorflow as tf
 
 
