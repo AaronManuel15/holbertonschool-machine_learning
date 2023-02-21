@@ -48,17 +48,18 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
         print("\tValidation Cost: {}".format(valid_cost))
         print("\tValidation Accuracy: {}".format(valid_accuracy))
 
-        for mini_batch in range(mini_batches):
-            run_feed = {x: X_shuff[mini_batch *
-                                   batch_size:batch_size*(mini_batch+1)],
-                        y: Y_shuff[mini_batch *
-                                   batch_size:batch_size*(mini_batch+1)]}
-            sess.run(train_op, feed_dict=run_feed)
-            if (mini_batch + 1) % 100 == 0 and mini_batch != 0:
-                mb_cost = sess.run(loss, feed_dict=run_feed)
-                mb_accuracy = sess.run(accuracy, feed_dict=run_feed)
-                print("\tStep {}:".format(mini_batch + 1))
-                print("\t\tCost: {}".format(mb_cost))
-                print("\t\tAccuracy: {}".format(mb_accuracy))
+        if epoch < epochs:
+            for mini_batch in range(mini_batches):
+                run_feed = {x: X_shuff[mini_batch *
+                                       batch_size:batch_size*(mini_batch+1)],
+                            y: Y_shuff[mini_batch *
+                                       batch_size:batch_size*(mini_batch+1)]}
+                sess.run(train_op, feed_dict=run_feed)
+                if (mini_batch + 1) % 100 == 0 and mini_batch != 0:
+                    mb_cost = sess.run(loss, feed_dict=run_feed)
+                    mb_accuracy = sess.run(accuracy, feed_dict=run_feed)
+                    print("\tStep {}:".format(mini_batch + 1))
+                    print("\t\tCost: {}".format(mb_cost))
+                    print("\t\tAccuracy: {}".format(mb_accuracy))
     saver = tf.train.Saver()
     return saver.save(sess, save_path)
