@@ -32,13 +32,13 @@ def train_mini_batch(X_train, Y_train, X_valid, Y_valid, batch_size=32,
     train_op = graph.get_collection("train_op")
     m = X_train.shape[0]
     mini_batches = m // batch_size
-    if mini_batches % batch_size != 0:
+    if m % batch_size != 0:
         mini_batches += 1
     for epoch in range(epochs + 1):
         X_shuff, Y_shuff = shuffle_data(X_train, Y_train)
         train_cost, train_accuracy = sess.run((loss, accuracy),
-                                              feed_dict={x: X_shuff,
-                                                         y: Y_shuff})
+                                              feed_dict={x: X_train,
+                                                         y: Y_train})
         valid_cost, valid_accuracy = sess.run((loss, accuracy),
                                               feed_dict={x: X_valid,
                                                          y: Y_valid})
