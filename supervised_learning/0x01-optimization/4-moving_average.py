@@ -10,7 +10,7 @@ def moving_average(data, beta):
 
     Returns: a list containing the moving averages of data"""
 
-    weight = 0
+    weight = 0.0
     for i in range(len(data)):
         weight = beta*weight + (1 - beta)*data[i]
         data[i] = weight / (1 - beta**(i + 1))
