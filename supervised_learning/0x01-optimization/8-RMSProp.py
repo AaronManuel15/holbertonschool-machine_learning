@@ -12,5 +12,6 @@ def create_RMSProp_op(loss, alpha, beta2, epsilon):
 
     Returns: the RMSProp optimization operation"""
 
-    return tf.train.RMSPropOptimizer(learning_rate=alpha, epsilon=epsilon,
-                                     momentum=beta2).minimize(loss)
+    return tf.train.RMSPropOptimizer(learning_rate=alpha,
+                                     decay=beta2,
+                                     epsilon=epsilon).minimize(loss=loss)
