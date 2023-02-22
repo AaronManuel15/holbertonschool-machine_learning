@@ -3,7 +3,7 @@
 
 
 def learning_rate_decay(alpha, decay_rate, global_step, decay_step):
-    """Creates the training op for NN in TF using Adam Opt Algo:
+    """updates the learning rate using inverse time decay:
     alpha: is the original learning rate
     decay_rate: is the weight used to determine the rate at which
         alpha will decay
