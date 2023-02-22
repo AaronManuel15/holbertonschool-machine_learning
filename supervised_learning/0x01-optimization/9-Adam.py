@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 """Task 9"""
-import tensorflow as tf
 
 
 def update_variables_Adam(alpha, beta1, beta2,
