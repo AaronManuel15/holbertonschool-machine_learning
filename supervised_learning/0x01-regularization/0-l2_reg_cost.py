@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Task 0"""
 import numpy as np
-import tensorflow.compat.v1 as tf
-tf.disable_eager_execution()
 
 
 def l2_reg_cost(cost, lambtha, weights, L, m):
