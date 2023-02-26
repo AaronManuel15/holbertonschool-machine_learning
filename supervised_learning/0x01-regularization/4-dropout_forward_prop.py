@@ -21,19 +21,22 @@ def dropout_forward_prop(X, weights, L, keep_prob):
 
     cache = {}
     cache["A0"] = X
-    for l in range(1, L + 1):
-        W = weights["W{}".format(l)]
-        A = cache["A{}".format(l - 1)]
-        b = weights["b{}".format(l)]
+    for lay in range(1, L + 1):
+        W = weights["W{}".format(lay)]
+        A = cache["A{}".format(lay - 1)]
+        b = weights["b{}".format(lay)]
         z = np.matmul(W, A) + b
-        
-        if l < L:
-            d = (np.random.rand(*X.shape) < keep_prob).astype(int)
-            cache["D{}".format(l)] = d
+
+        if lay == L:
+            softA = np.exp(z)/np.sum(np.exp(z), axis=0)
+            cache["A{}".format(lay)] = softA
+
+        else:
             newA = (np.exp(z) - np.exp(-z)) / (np.exp(z) + np.exp(-z))
+            d = (np.random.rand(newA.shape[0], newA.shape[1]) < keep_prob)
+            cache["D{}".format(lay)] = d.astype(int)
             newA *= d
             newA /= keep_prob
-        else:
-            newA = np.exp(z)/np.sum(np.exp(z), axis=0)
-        cache["A{}".format(l)] = newA
+            cache["A{}".format(lay)] = newA
+
     return cache
