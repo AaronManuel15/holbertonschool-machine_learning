@@ -17,7 +17,7 @@ def lenet5(X):
     # convolutional layer 1
     conv1 = K.layers.Conv2D(filters=6, kernel_size=(5, 5),
                             padding='same', activation='relu',
-                            kernel_initializer=init)(x)
+                            kernel_initializer=init)(X)
 
     # pooling layer 1
     pool1 = K.layers.MaxPooling2D(pool_size=(2, 2),
@@ -50,6 +50,6 @@ def lenet5(X):
     model = K.models.Model(X, y_pred)
 
     model.compile(optimizer=K.optimizers.Adam(),
-                         loss='categorical_crossetentropy',
-                         metrics=['accuracy'])
+                  loss='categorical_crossetentropy',
+                  metrics=['accuracy'])
     return model
