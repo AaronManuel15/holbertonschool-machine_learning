@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Task 5"""
 import tensorflow.keras as K
 
 
@@ -48,6 +49,7 @@ def lenet5(X):
 
     model = K.models.Model(X, y_pred)
 
-    return model.compile(optimizer=K.optimizers.Adam(),
+    model.compile(optimizer=K.optimizers.Adam(),
                          loss='categorical_crossetentropy',
                          metrics=['accuracy'])
+    return model
