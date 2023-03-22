@@ -37,7 +37,6 @@ def resnet50():
     block16 = identity_block(block15, [512, 512, 2048])
     pool2 = K.layers.AveragePooling2D(pool_size=(7, 7), strides=(7, 7),
                                       padding='valid')(block16)
-    dropout = K.layers.Dropout(rate=0.4)(pool2)
     dense = K.layers.Dense(units=1000, activation='softmax',
-                           kernel_initializer=init)(dropout)
+                           kernel_initializer=init)(pool2)
     return K.models.Model(inputs=inputs, outputs=dense)
