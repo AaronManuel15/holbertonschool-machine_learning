@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Task 2"""
 import tensorflow.keras as K
-identity_block = __import__('2-identity_block').identity_block
 
 
 def identity_block(A_prev, filters):
