@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Task 0. Initialize Yolo"""
 from tensorflow.keras.models import load_model
+import numpy as np
 
 
 class Yolo:
