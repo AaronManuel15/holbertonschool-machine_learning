@@ -68,10 +68,10 @@ class Yolo:
             box_confidences.append(1 / (1 + np.exp(-outputs[i][..., 4:5])))
             box_class_probs.append(1 / (1 + np.exp(-outputs[i][..., 5:])))
         image_height, image_width = image_size
-        grid_height = outputs[0].shape[0]
-        grid_width = outputs[0].shape[1]
-        anchor_boxes = outputs[0].shape[2]
         for i in range(len(boxes)):
+            grid_width = outputs[i].shape[1]
+            grid_height = outputs[i].shape[0]
+            anchor_boxes = outputs[i].shape[2]
             for cy in range(grid_height):
                 for cx in range(grid_width):
                     for b in range(anchor_boxes):
