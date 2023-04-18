@@ -241,7 +241,6 @@ class Yolo:
             box_scores: a numpy.ndarray containing the box scores for each box
             file_name: the file path where the original image is stored"""
         for i, box in enumerate(boxes):
-            print(box)
             x1, y1, x2, y2 = box
             cv2.rectangle(image, (int(x1), int(y1)), (int(x2), int(y2)),
                           (255, 0, 0), 2)
@@ -250,6 +249,7 @@ class Yolo:
                         (int(x1-1), int(y1-5)), cv2.FONT_HERSHEY_SIMPLEX, 0.5,
                         (0, 0, 255), 1, lineType=cv2.LINE_AA)
         cv2.imshow(file_name, image)
+        print("Press 's' to save the image with the bounding boxes")
         key = cv2.waitKey(0)
         if key == ord('s'):
             if os.path.isdir("./detections") is False:
