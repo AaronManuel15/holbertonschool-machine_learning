@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
 """Task 1: Minor"""
 
+
 def get_matrix_minor(m, i, j):
     """gets the minor of a matrix"""
     return [row[:j] + row[j+1:] for row in (m[:i]+m[i+1:])]
+
 
 def determinant(matrix):
     """Calculates the determinant of a matrix
@@ -29,6 +31,7 @@ def determinant(matrix):
                  for row in rows]
         det += k * (-1) ** i * determinant(new_m)
     return det
+
 
 def minor(matrix):
     """Calculates the minor matrix of a matrix
