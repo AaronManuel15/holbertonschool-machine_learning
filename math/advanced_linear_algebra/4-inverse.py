@@ -76,6 +76,11 @@ def adjugate(matrix):
 
 def inverse(matrix):
     """Calculates the inverse of a matrix"""
+    for i in range(len(matrix)):
+        if type(matrix[i]) is not list:
+            raise TypeError("matrix must be a list of lists")
+        if len(matrix) != len(matrix[i]):
+            raise ValueError("matrix must be a non-empty square matrix")
     if determinant(matrix) == 0:
         return None
     return [[i / determinant(matrix) for i in j] for j in adjugate(matrix)]
