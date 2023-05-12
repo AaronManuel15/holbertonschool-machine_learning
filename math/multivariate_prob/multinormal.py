@@ -1,4 +1,4 @@
-#!/usr/env python3
+#!/usr/bin/env python3
 """Task 2: Initialize Gaussian Process"""
 import numpy as np
 
