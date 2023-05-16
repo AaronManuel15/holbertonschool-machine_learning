@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 """Task 0: Likelihood"""
 import numpy as np
-import np.math.factorial as fact
 
 
 def likelihood(x, n, P):
@@ -24,5 +23,6 @@ def likelihood(x, n, P):
     if min(P) < 0 or max(P) > 1:
         raise ValueError("All values in P must be in the range [0, 1],\
                          respectively")
+    fact = np.math.factorial
     comb = fact(n) / (fact(x) * fact(n - x))
     return comb * (P ** x) * ((1 - P) ** (n - x))
