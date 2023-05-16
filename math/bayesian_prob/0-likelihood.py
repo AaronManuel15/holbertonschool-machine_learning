@@ -21,8 +21,7 @@ def likelihood(x, n, P):
     if type(P) is not np.ndarray or len(P.shape) != 1:
         raise TypeError("P must be a 1D numpy.ndarray")
     if min(P) < 0 or max(P) > 1:
-        raise ValueError("All values in P must be in the range [0, 1], " +
-                         "respectively")
+        raise ValueError("All values in P must be in the range [0, 1]")
     fact = np.math.factorial
     comb = fact(n) / (fact(x) * fact(n - x))
     return comb * (P ** x) * ((1 - P) ** (n - x))
