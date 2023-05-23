@@ -21,7 +21,7 @@ def pca(X, var=0.95):
     # sort eigenvalues and eigenvectors
     idx = eig_vals.argsort()[::-1]
     eig_vals = eig_vals[idx]
-    eig_vecs = eig_vecs[:, idx] * -1
+    eig_vecs = eig_vecs[:, idx]
     # compute new dimensionality
     nd = 0
     for i in range(len(eig_vals)):
