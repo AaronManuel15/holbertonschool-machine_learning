@@ -14,20 +14,15 @@ def pca(X, var=0.95):
     Returns:
         W: numpy.ndarray of shape (d, nd) where nd is the new dimensionality
             after PCA"""
-    # compute covariance matrix
-    cov = np.cov(X.T)
-    # compute eigenvalues and eigenvectors
-    eig_vals, eig_vecs = np.linalg.eig(cov)
-    # sort eigenvalues and eigenvectors
-    idx = eig_vals.argsort()[::-1]
-    eig_vals = eig_vals[idx]
-    eig_vecs = eig_vecs[:, idx]
-    # compute new dimensionality
-    nd = 0
-    for i in range(len(eig_vals)):
-        if sum(eig_vals[:i]) / sum(eig_vals) >= var:
-            nd = i
-            break
-    # compute W
-    W = eig_vecs[:, :nd + 1]
+    # Step 1: Calculate the SVD of the input data
+    U, S, Vt = np.linalg.svd(X, full_matrices=False)
+    
+    # Step 2: Calculate the cumulative explained variance ratio
+    explained_variance_ratio = np.cumsum(S**2) / np.sum(S**2)
+    
+    # Step 3: Determine the number of principal components
+    n_components = np.argmax(explained_variance_ratio >= var) + 1
+    
+    # Step 4: Select the first n_components right singular vectors
+    W = Vt[:n_components + 1].T
     return W
