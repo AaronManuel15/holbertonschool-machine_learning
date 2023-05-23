@@ -10,6 +10,10 @@ def initialize(X, k):
             n: number of data points
             d: dimension of data points
         k: int, number of clusters"""
+    if type(X) is not np.ndarray or len(X.shape) != 2:
+        return None
+    if type(k) is not int or k <= 0:
+        return None
     mins = np.min(X, axis=0)
     maxs = np.max(X, axis=0)
     centroids = np.random.uniform(low=mins, high=maxs, size=(k, X.shape[1]))
