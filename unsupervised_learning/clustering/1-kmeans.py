@@ -50,7 +50,8 @@ def kmeans(X, k, iterations=1000):
                 Cs_copy[i] = np.mean(X[clss == i], axis=0)
             else:
                 Cs_copy[i] = initialize(X, 1)
-        clss = np.argmin(np.linalg.norm(X[:, np.newaxis] - Cs_copy, axis=2), axis=1)
+        clss = np.argmin(np.linalg.norm(X[:, np.newaxis] - Cs_copy, axis=2),
+                         axis=1)
         if np.array_equal(Cs, Cs_copy):
             break
         Cs = Cs_copy
