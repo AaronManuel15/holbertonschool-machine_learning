@@ -40,16 +40,14 @@ def kmeans(X, k, iterations=1000):
     if type(k) is not int or k <= 0 or iterations < 1:
         return None, None
     Cs = initialize(X, k)
-    clss_copy = None
     for i in range(iterations):
-        if i > 0:
-            clss_copy = clss.copy()
+        Cs_copy = Cs.copy()
         clss = np.argmin(np.linalg.norm(X[:, np.newaxis] - Cs, axis=2), axis=1)
-        if np.array_equal(clss, clss_copy):
-            break
         for i in range(len(Cs)):
             if len(X[clss == i] > 0):
                 Cs[i] = np.mean(X[clss == i], axis=0)
             else:
                 Cs = initialize(X, k)
+        if np.array_equal(Cs, Cs_copy):
+            break
     return Cs, clss
