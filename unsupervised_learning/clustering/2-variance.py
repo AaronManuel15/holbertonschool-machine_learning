@@ -13,7 +13,13 @@ def variance(X, C):
     Returns:
         var: the total variance"""
 
-    distances = np.linalg.norm(X[:, np.newaxis] - C, axis=2)
-    clss = np.argmin(distances, axis=1)
-
-    return np.sum(np.square(distances[np.arange(len(X)), clss]))
+    if type(X) is not np.ndarray or len(X.shape) != 2:
+        return None
+    if type(C) is not np.ndarray or len(C.shape) != 2:
+        return None
+    try:
+        distances = np.linalg.norm(X[:, np.newaxis] - C, axis=2)
+        clss = np.argmin(distances, axis=1)
+        return np.sum(np.square(distances[np.arange(len(X)), clss]))
+    except Exception:
+        return None
