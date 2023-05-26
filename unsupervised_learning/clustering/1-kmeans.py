@@ -37,7 +37,9 @@ def kmeans(X, k, iterations=1000):
             each data point belongs to"""
     if type(X) is not np.ndarray or len(X.shape) != 2:
         return None, None
-    if type(k) is not int or k <= 0 or iterations < 1:
+    if type(iterations) is not int or iterations <= 0:
+        return None, None
+    if type(k) is not int or k <= 0:
         return None, None
     Cs = initialize(X, k)
     for _ in range(iterations):
