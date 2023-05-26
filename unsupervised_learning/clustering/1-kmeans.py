@@ -42,23 +42,16 @@ def kmeans(X, k, iterations=1000):
     if type(k) is not int or k <= 0:
         return None, None
     Cs = initialize(X, k)
-    for _ in range(iterations):
-        distances = np.linalg.norm(X[:, np.newaxis] - Cs, axis=2)
-        clss = np.argmin(distances, axis=1)
-
-        new_C = np.empty_like(Cs)
-        for i in range(k):
-            assigned_points = X[clss == i]
-            if len(assigned_points) > 0:
-                new_C[i] = np.mean(assigned_points, axis=0)
+    clss = np.argmin(np.linalg.norm(X[:, np.newaxis] - Cs, axis=2), axis=1)
+    for i in range(iterations):
+        Cs_copy = Cs.copy()
+        for i in range(len(Cs)):
+            if len(X[clss == i] > 0):
+                Cs_copy[i] = np.mean(X[clss == i], axis=0)
             else:
-                new_C[i] = initialize(X, 1)
-        clss = np.argmin(np.linalg.norm(X[:, np.newaxis] - new_C, axis=2),
-                         axis=1)
-
-        if np.allclose(Cs, new_C):
+                Cs_copy[i] = initialize(X, 1)
+        clss = np.argmin(np.linalg.norm(X[:, np.newaxis] - Cs_copy, axis=2), axis=1)
+        if np.array_equal(Cs, Cs_copy):
             break
-
-        Cs = new_C
-
+        Cs = Cs_copy
     return Cs, clss
