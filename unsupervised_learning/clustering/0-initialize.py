@@ -9,7 +9,10 @@ def initialize(X, k):
         X: numpy.ndarray, shape(n, d), data points to be clustered
             n: number of data points
             d: dimension of data points
-        k: int, number of clusters"""
+        k: int, number of clusters
+    Returns:
+        centroids: numpy.ndarray of shape (k, d) containing the initialized
+            centroids for each cluster,  or None on failure"""
     if type(X) is not np.ndarray or len(X.shape) != 2:
         return None
     if type(k) is not int or k <= 0:
