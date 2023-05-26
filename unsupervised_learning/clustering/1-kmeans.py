@@ -54,7 +54,7 @@ def kmeans(X, k, iterations=1000):
             else:
                 new_C[i] = initialize(X, 1)
         clss = np.argmin(np.linalg.norm(X[:, np.newaxis] - new_C, axis=2),
-                            axis=1)
+                         axis=1)
 
         if np.allclose(Cs, new_C):
             break
