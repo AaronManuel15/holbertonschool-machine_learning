@@ -22,7 +22,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
 
     if type(kmin) is not int or kmin < 0:
         return None, None
-    if type(kmax) is not int or kmax < 0:
+    if type(kmax) is not int or kmax <= 0 or kmin >= kmax:
         return None, None
 
     results, d_vars = [], []
@@ -32,5 +32,5 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
         print(results)
         d_vars.append(variance(X, klusters))
         kmin += 1
-
+    
     return results, d_vars
