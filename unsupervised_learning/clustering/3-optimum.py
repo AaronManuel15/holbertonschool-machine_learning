@@ -32,29 +32,18 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
         return None, None
 
     results, d_vars = [], []
-    smallest_variance = float('inf')
-    for k in range(kmin, kmax + 1):
-        centroids, labels = kmeans(X, k, iterations)
-        var = variance(X, centroids)
-        results.append((centroids, labels))
+    k = kmin
+    while(k <= kmax):
+        klusters, klss = kmeans(X, k, iterations)
         if k == kmin:
+            var = variance(X, klusters)
+            results.append((klusters, klss))
             d_vars.append(0.0)
-        else:
-            d_vars.append(abs(smallest_variance - var))
-        if var < smallest_variance:
-            smallest_variance = var
-    # k = kmin
-    # while(k <= kmax):
-    #     klusters, klss = kmeans(X, k, iterations)
-    #     if k == kmin:
-    #         var = variance(X, klusters)
-    #         results.append((klusters, klss))
-    #         d_vars.append(0.0)
-    #         k += 1
-    #         continue
+            k += 1
+            continue
 
-    #     results.append((klusters, klss))
-    #     d_vars.append(abs(var - variance(X, klusters)))
-    #     k += 1
+        results.append((klusters, klss))
+        d_vars.append(abs(var - variance(X, klusters)))
+        k += 1
 
     return results, d_vars
