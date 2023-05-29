@@ -29,8 +29,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
     while(kmin <= kmax):
         klusters, klss = kmeans(X, kmin, iterations)
         results.append((klusters, klss))
-        print(results)
         d_vars.append(variance(X, klusters))
         kmin += 1
-    
+
     return results, d_vars
