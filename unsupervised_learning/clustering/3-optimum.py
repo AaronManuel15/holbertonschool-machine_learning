@@ -39,6 +39,7 @@ def optimum_k(X, kmin=1, kmax=None, iterations=1000):
             var = variance(X, klusters)
             results.append((klusters, klss))
             d_vars.append(0.0)
+            k += 1
             continue
 
         results.append((klusters, klss))
