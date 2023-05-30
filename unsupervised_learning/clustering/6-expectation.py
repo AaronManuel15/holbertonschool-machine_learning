@@ -48,7 +48,7 @@ def expectation(X, pi, m, S):
         P = pdf(X, m[i], S[i])
         g[i] = pi[i] * P
 # calculate the log likelihood before normalizing the probabilities
-    ll = np.sum(np.log(g))
+    ll = np.sum(np.log(np.sum(g, axis=0)))
 # normalize the probabilities
     g /= np.sum(g, axis=0)
 
