@@ -39,7 +39,7 @@ def pdf(X, m, S):
     diff = X - m.reshape(1, d)
     exponent = -0.5 * np.sum(np.dot(diff, inv_S) * diff, axis=1)
     P = constant * np.exp(exponent)
-    
+
     P[P < 1e-300] = 1e-300
 
     return P
