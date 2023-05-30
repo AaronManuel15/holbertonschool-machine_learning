@@ -41,15 +41,15 @@ def expectation(X, pi, m, S):
 
     if not np.isclose(np.sum(pi), 1):
         return None, None
-
+# create a numpy array of zeros with same shape as pi but more depth
     g = np.zeros((k, n))
-
+# iterate through the number of clusters
     for i in range(k):
         P = pdf(X, m[i], S[i])
         g[i] = pi[i] * P
-
+# calculate the log likelihood before normalizing the probabilities
+    ll = np.sum(np.log(g))
+# normalize the probabilities
     g /= np.sum(g, axis=0)
-
-    ll = np.sum(np.log(np.sum(g, axis=0)))
 
     return g, ll
