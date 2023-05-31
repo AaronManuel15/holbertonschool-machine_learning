@@ -44,9 +44,10 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
                                                                   ll.round(5)))
         pi, m, S = maximization(X, g)
         g_new, ll_new = expectation(X, pi, m, S)
-        if abs(ll - ll_new) <= tol:
-            print("Log Likelihood after {} iterations: {}".format(i + 1,
-                                                                  ll.round(5)))
+        if abs(ll - ll_new) < tol:
+            if verbose:
+                print("Log Likelihood after {} iterations: {}"
+                      .format(i, ll.round(5)))
             break
         g, ll = g_new, ll_new
 
