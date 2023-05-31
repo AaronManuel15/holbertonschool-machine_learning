@@ -47,8 +47,7 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
                 print("Log Likelihood after {} iterations: {}"
                       .format(i, ll[1].round(5)))
             break
-        if i <= iterations:
-            pi, m, S = maximization(X, g)
+        pi, m, S = maximization(X, g)
 
         ll[0] = ll[1]
 
