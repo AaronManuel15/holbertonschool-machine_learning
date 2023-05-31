@@ -52,4 +52,4 @@ def expectation_maximization(X, k, iterations=1000, tol=1e-5, verbose=False):
             break
         ll[0] = ll[1]
 
-    return pi, m, S, g, ll
+    return pi, m, S, g, ll[1]
