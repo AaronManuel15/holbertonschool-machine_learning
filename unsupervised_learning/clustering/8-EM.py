@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Task 8: EM"""
 import numpy as np
 initialize = __import__('4-initialize').initialize
