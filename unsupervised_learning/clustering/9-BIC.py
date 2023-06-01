@@ -55,8 +55,8 @@ def BIC(X, kmin=1, kmax=None, iterations=1000, tol=1e-5, verbose=False):
         results.append((pi, m, S))
         ks.append(k)
         loglikelihoods.append(ll)
-        p = (k * d + k * d + 1)
-        # p = k * d * (d + 1) / 2 + d * k + k - 1
+        # p = (k * d + k * d + 1)
+        p = k * d * (d + 1) / 2 + d * k + k - 1
         b.append(p * np.log(n) - 2 * ll)
 
     b = np.array(b)
