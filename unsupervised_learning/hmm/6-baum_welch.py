@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 """Task 6: The Baum-Welch Algorithm"""
 import numpy as np
 
