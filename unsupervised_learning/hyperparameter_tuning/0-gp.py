@@ -6,7 +6,7 @@ import numpy as np
 class GaussianProcess:
     """Represents a noiselsess 1D Gaussian process"""
 
-    def __init__(self, X_init, Y_init, ll=1, sigma_f=1):
+    def __init__(self, X_init, Y_init, l=1, sigma_f=1):
         """Constructor
         Args:
                 X_init: np.ndarray of shape (t, 1) representing the inputs
@@ -19,7 +19,7 @@ class GaussianProcess:
                     black-box function"""
         self.X = X_init
         self.Y = Y_init
-        self.ll = ll
+        self.ll = l
         self.sigma_f = sigma_f
         self.K = self.kernel(X_init, X_init)
 
