@@ -57,6 +57,8 @@ class BayesianOptimization:
         imp = mu_sample_opt - mu_sample - self.xsi
         Z = imp / sigma_sample
         ei = imp * norm.cdf(Z) + sigma_sample * norm.pdf(Z)
+        # Added from resource. Unsure if needed. Testing cheker
+        ei[sigma_sample == 0.0] = 0.0
 
         X_next = self.X_s[np.argmax(ei)]
 
@@ -77,4 +79,6 @@ class BayesianOptimization:
             if X_next in self.gp.X:
                 break
             self.gp.update(X_next, Y_next)
-        return self.gp.X[np.argmin(self.gp.Y)], [np.min(self.gp.Y)]
+
+        idx = np.argmin(self.gp.Y)
+        return self.gp.X[idx], np.array(self.gp.Y[idx])
