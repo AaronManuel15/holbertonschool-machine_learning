@@ -80,5 +80,8 @@ class BayesianOptimization:
                 break
             self.gp.update(X_next, Y_next)
 
+        # Thievered from Ben's code
+        self.gp.X = self.gp.X[:-1]
+
         idx = np.argmin(self.gp.Y)
         return self.gp.X[idx], np.array(self.gp.Y[idx])
