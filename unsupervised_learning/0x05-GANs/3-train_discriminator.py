@@ -6,7 +6,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 import torch.nn.functional as F
-
+realSample_Z = __import__('2-sample_Z').realSample_Z
 
 def train_dis(Gen, Dis, dInputSize, gInputSize, mbatchSize, steps, optimizer,
               crit):
