@@ -37,8 +37,30 @@ class LSTMCell:
             x_t: numpy.ndarray of shape (m, i) containing the data input for
                 the cell
                 m: batch size for the data
-        Returns:    
+        Returns:
             h_next: next hidden state
             c_next: next cell state
             y: output of the cell"""
-        pass
+
+        input = np.concatenate((h_prev, x_t), axis=1)
+        # Forget Gate
+        f_gate = self.sigmoid(input @ self.Wf + self.bf)
+        # Input Gate
+        i_gate = self.sigmoid(input @ self.Wu + self.bu)
+        c_update = np.tanh(input @ self.Wc + self.bc)
+        input_gate = i_gate * c_update
+        # Output Gate
+        o_gate = self.sigmoid(input @ self.Wo + self.bo)
+        # Cell State work
+        c_next = c_prev * f_gate + input_gate
+        # Next hidden
+        h_next = np.tanh(c_next) * o_gate
+        # Next Output
+        y = h_next @ self.Wy + self.by
+        y = np.exp(y) / np.sum(np.exp(y), axis=1, keepdims=True)
+
+        return h_next, c_next, y
+
+    def sigmoid(self, x):
+        """sigmoid function"""
+        return 1 / (1 + np.exp(-x))
