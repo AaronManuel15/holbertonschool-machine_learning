@@ -17,15 +17,15 @@ class LSTMCell:
             y: output of the cell"""
 
         self.Wf = np.random.normal(size=(i + h, h))
-        self.bf = np.zeros((i, h))
+        self.bf = np.zeros((1, h))
         self.Wu = np.random.normal(size=(i + h, h))
-        self.bu = np.zeros((i, h))
+        self.bu = np.zeros((1, h))
         self.Wc = np.random.normal(size=(i + h, h))
-        self.bc = np.zeros((i, h))
+        self.bc = np.zeros((1, h))
         self.Wo = np.random.normal(size=(i + h, h))
-        self.bo = np.zeros((i, h))
+        self.bo = np.zeros((1, h))
         self.Wy = np.random.normal(size=(i + o, o))
-        self.by = np.zeros((i, o))
+        self.by = np.zeros((1, o))
 
     def forward(self, h_prev, c_prev, x_t):
         """Forward pass of the cell for one step
