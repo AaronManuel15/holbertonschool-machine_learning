@@ -13,7 +13,6 @@ def agglomerative(X, dist):
 
     Z = scipy.cluster.hierarchy.linkage(X, method='ward')
     clss = scipy.cluster.hierarchy.fcluster(Z, dist, criterion='distance')
-    scipy.cluster.hierarchy.dendrogram(Z, color_threshold=dist,
-                                       above_threshold_color='b')
+    scipy.cluster.hierarchy.dendrogram(Z, color_threshold=dist)
     plt.show()
     return clss
