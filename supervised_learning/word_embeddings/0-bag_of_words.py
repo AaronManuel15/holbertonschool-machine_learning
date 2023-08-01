@@ -35,7 +35,7 @@ def bag_of_words(sentences, vocab=None):
 
     # filters the features by vocab passed in
     if vocab is not None:
-        features = [x for x in features if x in vocab]
+        features = vocab
 
     # sorts by alphabetical order
     if vocab is None:
