@@ -33,10 +33,10 @@ def bag_of_words(sentences, vocab=None):
         append = elem.split()
         features.extend(append)
 
-    features = sorted(list(set(features)))
 
     if vocab is not None:
         features = [x for x in features if x in vocab]
+    features = sorted(list(set(features)))
 
     cv = CountVectorizer(vocabulary=features)
     embedding = cv.fit_transform(corpus).toarray()
