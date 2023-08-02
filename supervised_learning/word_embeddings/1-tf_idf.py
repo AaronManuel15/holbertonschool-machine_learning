@@ -41,7 +41,7 @@ def tf_idf(sentences, vocab=None):
     if vocab is None:
         features = sorted(list(set(features)))
 
-    cv = TfidfVectorize(vocabulary=features)
+    cv = TfidfVectorizer(vocabulary=features)
     embedding = cv.fit_transform(corpus).toarray()
 
     return embedding, features
