@@ -2,6 +2,7 @@
 """Task 0: Unigram BLEU score"""
 import numpy as np
 import math
+np.seterr(divide='ignore', invalid='ignore')
 
 
 def uni_bleu(references, sentence):
