@@ -39,8 +39,8 @@ def uni_bleu(references, sentence):
     # Calculate Brevity Penalty
     bp = 1
     uni_len = len(unigrams)
-    closest_length = min(references, key=lambda ref: abs(len(ref) - uni_len))
-    if uni_len < len(closest_length):
+    closest_length = min(references, key=lambda ref: abs(len(ref) - sent_len))
+    if sent_len < len(closest_length):
         bp = np.exp(1 - len(closest_length)/sent_len)
 
     return precision * bp
