@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Task 0: Unigram BLEU score"""
 import numpy as np
-import math
-np.seterr(divide='ignore', invalid='ignore')
 
 
 def uni_bleu(references, sentence):
@@ -27,20 +25,14 @@ def uni_bleu(references, sentence):
     ref_app = np.array(ref_app)
 
     # Calculate Precision
-    precision = []
-    for i, uni in enumerate(sent_app):
-        try:
-            precision.append(int(uni) / ref_app[..., i].max())
-        except RuntimeWarning:
-            precision.append(0)
-    sent_len = len(sentence)
     uni_len = len(unigrams)
-    precision = np.sum([v for v in precision if not math.isinf(v)]) / uni_len
+    sent_len = len(sentence)
+    P = uni_len / sent_len
 
     # Calculate Brevity Penalty
-    bp = 1
+    BP = 1
     closest_length = min(len(ref) for ref in references)
     if sent_len < closest_length:
-        bp = np.exp(1 - (closest_length/sent_len))
+        BP = np.exp(1 - (closest_length/sent_len))
 
-    return precision * bp
+    return P * BP
