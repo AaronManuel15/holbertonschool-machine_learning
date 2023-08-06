@@ -34,7 +34,8 @@ def uni_bleu(references, sentence):
         except RuntimeWarning:
             precision.append(0)
     sent_len = len(sentence)
-    precision = np.sum([v for v in precision if not math.isinf(v)]) / sent_len
+    uni_len = len(unigrams)
+    precision = np.sum([v for v in precision if not math.isinf(v)]) / uni_len
 
     # Calculate Brevity Penalty
     bp = 1
