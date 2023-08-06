@@ -17,15 +17,17 @@ def uni_bleu(references, sentence):
     seen = set()
     unigrams = [x for x in sentence if not (x in seen or seen.add(x))]
 
-    # Count appearances in references and sentence for each unigram
-    sent_app = [sentence.count(i) for i in unigrams]
+    # Count appearances in references for each unigram
+    # This didn't actually happen. Worked very well until an edge case I could
+    # not understand.
     ref_app = []
     for ref in references:
-        ref_app.append([ref.count(x) for x in unigrams])
-    ref_app = np.array(ref_app)
+        for word in unigrams:
+            if word in ref and word not in ref_app:
+                ref_app.append(word)
 
     # Calculate Precision
-    uni_len = len(unigrams)
+    uni_len = len(ref_app)
     sent_len = len(sentence)
     P = uni_len / sent_len
 
