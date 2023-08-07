@@ -14,7 +14,6 @@ def ngram_bleu(references, sentence, n):
         the n-gram BLEU score"""
 
     n_grams = n_gram_generator(sentence, n)
-    print("n_grams: {}".format(n_grams))
 
     # Calculate the precision for each n-gram
     # Count appearances in sentence and references for each n-gram
