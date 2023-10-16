@@ -11,6 +11,7 @@ def availableShips(pCount):
     Returns:
         list: The list of ships that can hold the given number of passengers.
     """
+    sList = []
     params = {'page': 1}
     response = requests.get(API + 'starships', params=params)
     if response.status_code == 200:
