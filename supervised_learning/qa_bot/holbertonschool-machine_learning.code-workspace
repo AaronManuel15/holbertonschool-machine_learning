@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../holbertonschool-sorting_algorithms"
+		},
+		{
+			"path": "../../../ST_LiveCoding"
+		}
+	],
+	"settings": {}
+}
