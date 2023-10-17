@@ -12,7 +12,7 @@ if __name__ == '__main__':
     if user.status_code == 200:
         print(user.json()['location'])
     elif user.status_code == 403:
-        time = (int(user.headers['X-RateLimit-Reset']) - int(time.time())) / 60
-        print('Reset in {} min'.format(time))
+        time = (int(user.headers['X-RateLimit-Reset']) - int(time.time()))
+        print('Reset in {} min'.format(time // 60))
     if user.status_code == 404:
         print('Not found')
