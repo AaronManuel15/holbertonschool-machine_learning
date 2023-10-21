@@ -25,4 +25,5 @@ if __name__ == '__main__':
 
     # Print rocket names and launch counts
     for k, v in r_counts1.items():
-        print('{}: {}'.format(k, v))
+        if v > 0:
+            print('{}: {}'.format(k, v))
