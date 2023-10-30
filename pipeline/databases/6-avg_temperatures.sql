@@ -1,4 +1,4 @@
--- computes the score average of all records in the table
+-- computes the average temp for all cities
 SELECT city, AVG(value) AS avg_temp FROM temperatures
 GROUP BY city
 ORDER BY avg_temp DESC;
