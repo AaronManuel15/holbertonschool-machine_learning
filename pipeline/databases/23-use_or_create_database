@@ -1,2 +1,2 @@
 // Task 23 - creates or uses a database
-use mydb;
+use my_db
