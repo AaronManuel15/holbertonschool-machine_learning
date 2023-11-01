@@ -1,0 +1,4 @@
+// Task 24 - inserts a document into the collection school
+db.school.insert({
+    name: "Holberton school",
+})
