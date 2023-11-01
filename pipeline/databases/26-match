@@ -1,0 +1,3 @@
+// Task 26 - lists all documents in the collection school with name
+// equal to Holberton school
+db.school.find({name: "Holberton school"})
